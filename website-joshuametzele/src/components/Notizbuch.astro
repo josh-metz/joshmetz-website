@@ -1,0 +1,27 @@
+---
+// Notizbuch: zeigt die neuesten Artikel aus src/content/notizbuch
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('notizbuch', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
+const fmt = (d) => d.toLocaleDateString('de-DE', { month: 'long', year: 'numeric' });
+---
+<section id="notizbuch" class="alt">
+  <div class="wrap grid-intro">
+    <div class="intro">
+      <h2 class="section-title">Notizbuch</h2>
+      <p>Gedanken aus der Arbeit. Unfertig erlaubt.</p>
+    </div>
+    <div class="posts">
+      {posts.map((p) => (
+        <article class="post">
+          <div class="eyebrow meta">{fmt(p.data.date)}{p.data.minutes && ` · ${p.data.minutes} Min.`}</div>
+          <h3>{p.data.title}</h3>
+          <p>{p.data.summary}</p>
+          <a class="more" href={`/notizbuch/${p.id}`}>Weiterlesen →</a>
+        </article>
+      ))}
+      {posts.length === 0 && <p>Bald mehr.</p>}
+    </div>
+  </div>
+</section>
