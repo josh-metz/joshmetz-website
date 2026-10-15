@@ -32,6 +32,12 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .brand{display:flex;align-items:center;gap:12px}
 .brand img{display:block}
 .brand span{font-family:var(--accentfont);font-weight:600;font-size:17px;white-space:nowrap}
+/* Name und Unterzeile neben dem Logo, zweizeilig */
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand .brand-sub{font-weight:500;color:var(--muted)}
+/* Logo exakt so hoch wie der Textblock: Oberkante = Oberkante der Großbuchstaben von „Joshua“, Unterkante = Grundlinie von „Prozesse“ (aus den Schriftmetriken berechnet) */
+header .brand{align-items:flex-start}
+header .brand img{width:28.2px;height:31.8px;margin-top:4.05px}
 nav{display:flex;gap:22px;justify-content:flex-end}
 nav a{font-family:var(--accentfont);font-size:15px;font-weight:500}
 nav a:hover{color:var(--accent)}
@@ -164,6 +170,12 @@ footer{padding:56px 0 28px;font-size:15px}
   .wrap{padding:0 16px}
   nav{gap:14px}
   nav a:nth-child(2){display:none}
+  .brand img{width:30px;height:auto}
+  .brand{gap:8px}
+  .brand span{font-size:15px}
+  .brand .brand-sub{font-size:13px}
+  nav a{font-size:14px}
+  header .brand img{width:23.2px;height:26.1px;margin-top:3.57px}
 }
 
 /* Unterseiten (Blogartikel, Impressum) */
