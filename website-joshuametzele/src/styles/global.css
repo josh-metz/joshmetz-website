@@ -158,3 +158,22 @@ footer a:hover{color:var(--accent)}
 .prose ul,.prose ol{padding-left:22px}
 .prose a{color:var(--accent);text-decoration:underline}
 .note{background:#fff6d6;color:#6b5600;padding:12px 16px;font-size:15px;margin-bottom:26px}
+
+/* Leistungen: drei Kategorien nebeneinander, durch dünne Linien getrennt */
+.services{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto auto 1fr auto;margin-top:40px}
+.services-sub{color:var(--muted);margin-top:10px}
+/* Subgrid: Titel, Linie und Texte stehen in allen drei Spalten auf gleicher Höhe, auch wenn ein Titel zweizeilig ist */
+.service{padding:4px 32px 6px;border-left:1px solid var(--line);display:grid;grid-row:span 5;grid-template-rows:subgrid;align-content:start}
+.service:first-child{padding-left:0;border-left:0}
+.service:last-child{padding-right:0}
+.service .n{font-family:var(--display);color:var(--accent);font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+.service h3{font-family:var(--accentfont);font-size:25px;font-weight:600;line-height:1.2;margin-top:14px;hyphens:manual;align-self:end}
+.service .rule{width:32px;margin:16px 0 18px;align-self:end}
+.service .desc{color:var(--muted);font-size:16px}
+.service .problem{padding-top:24px;font-family:var(--accentfont);font-weight:500;font-size:17px;line-height:1.4}
+@media (max-width:900px){
+  .services{grid-template-columns:1fr;grid-template-rows:none}
+  .service{grid-row:auto;grid-template-rows:none}
+  .service,.service:first-child,.service:last-child{padding:30px 0;border-left:0;border-top:1px solid var(--line)}
+  .service:first-child{border-top:0;padding-top:0}
+}
