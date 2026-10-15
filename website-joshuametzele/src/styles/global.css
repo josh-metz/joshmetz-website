@@ -123,12 +123,13 @@ blockquote cite{display:block;margin-top:10px;font-style:normal;color:var(--acce
 .about p + p{margin-top:14px;color:var(--muted);font-size:16px}
 
 /* Kontakt: großer Call-to-Action-Banner */
-.cta{background:var(--ink);color:var(--bg);padding:clamp(72px,10vw,120px) 0}
-.cta-inner{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end}
-.cta h2{font-family:var(--accentfont);font-weight:500;font-size:clamp(36px,5.2vw,64px);line-height:1.08;letter-spacing:-.02em;max-width:16ch}
+.cta{background:var(--ink);color:var(--bg);padding:clamp(56px,7vw,88px) 0}
+.cta-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center}
+.cta-art img{display:block;width:100%;height:auto;max-width:300px;margin-left:auto}
+.cta h2{font-family:var(--accentfont);font-weight:500;font-size:clamp(34px,4.3vw,56px);line-height:1.08;letter-spacing:-.02em;max-width:17ch}
 .cta .hl{color:var(--accent-soft)}
 .cta p{color:#b9b8b2;font-size:18px;max-width:52ch;margin-top:22px}
-.cta-btn{background:var(--bg);border-color:var(--bg);color:var(--ink);font-size:17px;padding:18px 30px;white-space:nowrap}
+.cta-btn{margin-top:28px;background:var(--bg);border-color:var(--bg);color:var(--ink);font-size:17px;padding:18px 30px;white-space:nowrap}
 .cta-btn:hover{background:transparent;border-color:var(--bg);color:var(--bg)}
 
 /* Fußzeile */
@@ -147,8 +148,8 @@ footer{padding:56px 0 28px;font-size:15px}
 @media (max-width:900px){
   .grid-intro,.split,.about,.cta-inner,.foot-grid{grid-template-columns:1fr}
   .split .divider{display:none}
-  .cta-inner{gap:32px;align-items:start}
-  .cta-btn{justify-self:start}
+  .cta-inner{gap:40px}
+  .cta-art img{max-width:240px;margin:0}
   .cases-wrap{min-height:0}
   .cases-scroll{position:static;overflow:visible;padding:0;inset:auto;-webkit-mask-image:none;mask-image:none}
   .process li{grid-template-columns:44px 1fr;gap:12px}
