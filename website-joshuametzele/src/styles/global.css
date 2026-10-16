@@ -36,6 +36,13 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 /* Name und Unterzeile neben dem Logo, zweizeilig */
 .brand-text{display:flex;flex-direction:column;line-height:1.15}
 .brand .brand-sub{font-weight:500;color:var(--muted)}
+/* Scroll-Effekt: Der Textblock ist links abgeschnitten (direkt am Logo), der Inhalt gleitet nach links hinaus und wirkt so, als verschwinde er hinter dem Logo */
+header .brand{gap:0}
+.brand-text{overflow:hidden;padding-left:12px}
+@media (max-width:520px){header .brand-text{padding-left:8px}}
+.brand-slide{display:flex;flex-direction:column;transition:transform .5s cubic-bezier(.65,0,.35,1),opacity .4s ease}
+header.is-scrolled .brand-slide{transform:translateX(-110%);opacity:0}
+@media (prefers-reduced-motion:reduce){.brand-slide{transition:opacity .2s}header.is-scrolled .brand-slide{transform:none}}
 /* Logo exakt so hoch wie der Textblock: Oberkante = Oberkante der Großbuchstaben von „Joshua“, Unterkante = Grundlinie von „Prozesse“ (aus den Schriftmetriken berechnet) */
 header .brand{align-items:flex-start}
 header .brand img{width:28.2px;height:31.8px;margin-top:4.05px}

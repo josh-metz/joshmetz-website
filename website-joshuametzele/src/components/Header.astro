@@ -1,13 +1,16 @@
 ---
 // Kopfzeile: Logo mit Name links, Navigation rechts
+// Beim Runterscrollen gleiten Name und Unterzeile nach links hinter das Logo, nur das Logo bleibt stehen.
 ---
 <header>
   <div class="wrap">
     <a href="/" class="brand" aria-label="Joshua Metzele, Startseite">
       <img src="/logo.svg" width="28" height="32" alt="">
       <span class="brand-text">
-        <span class="brand-name">Joshua Metzele</span>
-        <span class="brand-sub">Prozesse &amp; Automation</span>
+        <span class="brand-slide">
+          <span class="brand-name">Joshua Metzele</span>
+          <span class="brand-sub">Prozesse &amp; Automation</span>
+        </span>
       </span>
     </a>
     <nav>
@@ -17,3 +20,11 @@
     </nav>
   </div>
 </header>
+
+<script>
+  // Ab 40px Scrollweg bekommt die Kopfzeile die Klasse „is-scrolled“ (steuert die Animation in global.css)
+  const header = document.querySelector('header');
+  const update = () => header?.classList.toggle('is-scrolled', window.scrollY > 40);
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+</script>
