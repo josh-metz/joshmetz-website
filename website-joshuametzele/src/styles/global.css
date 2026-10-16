@@ -19,7 +19,7 @@
   --wrap:1120px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
@@ -27,7 +27,8 @@ a{color:inherit;text-decoration:none}
 .rule{width:56px;height:2px;background:var(--accent);margin:18px 0}
 
 /* Header */
-header{padding:28px 0}
+/* Kopfzeile bleibt beim Scrollen oben stehen; eigener Hintergrund, damit Inhalte darunter verschwinden */
+header{padding:28px 0;position:sticky;top:0;z-index:50;background:var(--bg)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px}
 .brand img{display:block}
@@ -58,7 +59,8 @@ nav a:hover{color:var(--accent)}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font-family:var(--accentfont);font-size:15px;font-weight:600;transition:background .2s,color .2s,border-color .2s}
 .btn:hover{background:var(--ink);color:var(--bg)}
 .btn.primary{background:var(--ink);color:var(--bg)}
-.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+/* Hover wie beim Kontakt-Button: Farben tauschen (schwarz ↔ hell), kein Grün */
+.btn.primary:hover{background:transparent;border-color:var(--ink);color:var(--ink)}
 /* Porträt: schlichtes Foto mit sanft gerundeten Ecken, ohne Rahmen */
 .portrait{display:flex;justify-content:center}
 .portrait .photo{width:100%;max-width:360px;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#d9d8d4}
@@ -68,7 +70,7 @@ nav a:hover{color:var(--accent)}
 section{padding:88px 0}
 .alt{background:var(--bg-alt)}
 .grid-intro{display:grid;grid-template-columns:1fr 3fr;gap:48px}
-.section-title{font-family:var(--accentfont);font-size:24px;font-weight:600;line-height:1.25}
+.section-title{font-family:var(--accentfont);font-size:clamp(32px,3.6vw,44px);font-weight:600;line-height:1.15;letter-spacing:-.015em}
 .intro p{color:var(--muted);margin-top:16px;max-width:24ch}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .card .num{font-family:var(--display);font-size:22px;color:var(--accent)}

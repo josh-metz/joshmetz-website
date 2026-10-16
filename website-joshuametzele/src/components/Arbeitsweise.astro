@@ -14,21 +14,21 @@ const cases = (await getCollection('fallbeispiele', ({ data }) => !data.draft))
             <span class="n">01</span>
             <div class="body">
               <h3>Zuhören</h3>
-              <p>Ich lerne zuerst dein Geschäft kennen: eure Prozesse, den Arbeitsalltag deines Teams und wo es gerade hakt.</p>
+              <p>Ich lerne zuerst deine Abläufe kennen, deinen Arbeitsalltag und wo es gerade hakt.</p>
             </div>
           </li>
           <li>
             <span class="n">02</span>
             <div class="body">
-              <h3>Gemeinsam durchdenken</h3>
-              <p>Wie ein kleiner Think Tank: Ich bringe Ideen und passende Anwendungsfälle mit, du die Wünsche und Erfahrungen deines Teams. Zusammen legen wir fest, was am Ende herauskommen soll.</p>
+              <h3>Durchdenken</h3>
+              <p>In einer gemeinsamen Session bringe ich passende Anwendungsfälle mit, abgestimmt auf deine Ideen. Wir legen fest, was umgesetzt wird und woran wir den Erfolg messen.</p>
             </div>
           </li>
           <li>
             <span class="n">03</span>
             <div class="body">
               <h3>Umsetzen</h3>
-              <p>Ich baue selbst und bleibe dran, bis es im Alltag läuft.</p>
+              <p>Ich setze die Anwendungsfälle Schritt für Schritt um, bis sie im Alltag laufen und die Ziele erreicht sind.</p>
             </div>
           </li>
         </ol>
@@ -42,7 +42,7 @@ const cases = (await getCollection('fallbeispiele', ({ data }) => !data.draft))
               const Tag = c.data.landingpage ? 'a' : 'div';
               return (
                 <Tag class="case" href={c.data.landingpage ? `/fallbeispiele/${c.id}` : undefined}>
-                  <div class="eyebrow tag">Fallbeispiel · {c.data.kategorie}</div>
+                  <div class="eyebrow tag">Anwendungsfall · {c.data.kategorie}</div>
                   <h3>{c.data.title}</h3>
                   {c.data.ergebnis && <div class="result">{c.data.ergebnis}</div>}
                   <p>{c.data.teaser}</p>
