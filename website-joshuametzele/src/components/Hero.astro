@@ -1,10 +1,13 @@
 ---
 // Startbereich: links Kernaussage, kurze Vorstellung, zwei Buttons · rechts Zeichnung
+// Wort-Rotation: der grüne Teil der Headline wechselt alle 4 Sekunden.
+// Die erste Endung ist der Standard für Suchmaschinen, Screenreader und „weniger Bewegung“.
+const endungen = ['einfach laufen.', 'Zeit sparen.', 'Deals bringen.', 'mitwachsen.'];
 ---
 <div class="hero">
   <div class="wrap hero-grid">
     <div>
-      <h1>Prozesse, die <span class="hl">einfach laufen.</span></h1>
+      <h1>Prozesse, die <span class="sr-only">{endungen[0]}</span><span class="hl rotator" aria-hidden="true">{endungen.map((wort, i) => <span class={i === 0 ? 'w is-active' : 'w'}>{wort}</span>)}</span></h1>
       <p class="lead">Ich helfe Vertriebsteams im Mittelstand, ihre CRM-Prozesse von der Lead-Gewinnung bis zum Abschluss so aufzusetzen, dass sie wieder mehr Zeit fürs Verkaufen haben.</p>
       <div class="cta-row">
         <a class="btn primary" href="/#kontakt">Erstgespräch vereinbaren →</a>
@@ -19,3 +22,22 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Alle 4 Sekunden: aktuelles Wort gleitet nach unten raus, nächstes kommt von oben rein
+  const rotator = document.querySelector('.rotator');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (rotator && !reduceMotion) {
+    const words = [...rotator.querySelectorAll('.w')];
+    let i = 0;
+    setInterval(() => {
+      if (document.hidden) return;
+      const current = words[i];
+      i = (i + 1) % words.length;
+      current.classList.remove('is-active');
+      current.classList.add('is-leaving');
+      words[i].classList.remove('is-leaving');
+      words[i].classList.add('is-active');
+    }, 4000);
+  }
+</script>
