@@ -36,8 +36,13 @@ const endungen = ['einfach laufen.', 'Zeit sparen.', 'Deals bringen.', 'mitwachs
       i = (i + 1) % words.length;
       current.classList.remove('is-active');
       current.classList.add('is-leaving');
-      words[i].classList.remove('is-leaving');
-      words[i].classList.add('is-active');
+      // Nächstes Wort erst ohne Animation zurück nach oben setzen, damit es immer von oben kommt
+      const next = words[i];
+      next.style.transition = 'none';
+      next.classList.remove('is-leaving');
+      void next.offsetHeight;
+      next.style.transition = '';
+      next.classList.add('is-active');
     }, 4000);
   }
 </script>
