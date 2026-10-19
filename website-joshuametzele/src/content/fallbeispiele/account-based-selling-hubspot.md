@@ -1,6 +1,6 @@
 ---
 title: Zielkunden-Profil und automatisierte Ansprache
-kategorie: Outbound
+kategorie: Account-Based Selling
 teaser: Zuerst schärfen wir deinen Zielkunden. Dann sucht das System automatisch passende Unternehmen und Ansprechpartner heraus, und dein Vertrieb spricht sie über gezielte Sequenzen aus Mails und Anrufen an, mit Vorlagen für jede Persona.
 reihenfolge: 1
 platzhalter: false
