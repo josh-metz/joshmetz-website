@@ -34,6 +34,8 @@ const fallbeispiele = defineCollection({
     seoTitel: z.string().optional(),       // Titel bei Google (ideal unter 60 Zeichen)
     beschreibung: z.string().optional(),   // Text bei Google unter dem Titel (120–155 Zeichen)
     zusammenfassung: z.string().optional(),// Ergebnis-Kasten oben auf der Unterseite
+    coverBild: z.string().optional(),      // Titelbild unter der Überschrift, z. B. /images/datei.webp
+    coverAlt: z.string().optional(),       // Bildbeschreibung (für Google und Screenreader)
     kennzahlen: z.array(z.object({ wert: z.string(), text: z.string() })).optional(),
     ctaTitel: z.string().optional(),       // Überschrift im schwarzen Banner unten
     ctaText: z.string().optional(),        // Text im schwarzen Banner unten

@@ -18,6 +18,9 @@ const fmt = (x) => x.toLocaleDateString('de-DE', { day: 'numeric', month: 'long'
       <h1>{d.headline ?? d.title}</h1>
       {d.untertitel && <p class="untertitel">{d.untertitel}</p>}
       {d.date && <div class="eyebrow meta" style="color:var(--muted);margin-bottom:28px">{fmt(d.date)}</div>}
+      {d.coverBild && (
+        <img class="cover" src={d.coverBild} alt={d.coverAlt ?? ''} width="1600" height="900" />
+      )}
       {d.zusammenfassung && (
         <div class="ergebnis-box">
           <div class="label">Das Ergebnis</div>

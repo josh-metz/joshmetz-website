@@ -225,6 +225,7 @@ footer{padding:56px 0 28px;font-size:15px}
 
 /* Fallbeispiel-Unterseiten („Aus der Praxis“) */
 .page .untertitel{font-family:var(--accentfont);font-weight:500;font-size:clamp(18px,2.2vw,21px);line-height:1.45;color:var(--muted);margin:-12px 0 14px}
+.page .cover{display:block;width:100%;height:auto;margin:8px 0 44px;mix-blend-mode:multiply}
 .ergebnis-box{border-left:3px solid var(--accent);background:var(--bg-alt);padding:26px 28px;margin:0 0 48px}
 .ergebnis-box .label{font-family:var(--accentfont);font-weight:600;font-size:22px;line-height:1.2;margin-bottom:10px}
 .ergebnis-box p{font-size:17px}

@@ -10,6 +10,8 @@ untertitel: Wie ein B2B-Software-Anbieter für Supply-Chain-Optimierung Account-
 date: 2026-10-19
 seoTitel: Volle Pipeline, falsche Kunden – Account-Based Selling mit HubSpot
 beschreibung: Wie ein B2B-Software-Anbieter mit Account-Based Selling in HubSpot ~40 % mehr Erstkontakte bis zum Angebot brachte und den Sales Cycle verkürzte.
+coverBild: /images/case-account-based-selling.webp
+coverAlt: Skizze eines Vertriebsleiters vor einem Trichter voller Leads, der sich in passende und unpassende Kunden aufteilt
 zusammenfassung: "Für jedes Unternehmen in der Pipeline wurde automatisch ein Ideal-Customer-Profile-Score berechnet und per Ampel eingestuft, jeder Kontakt anhand von Position und Berufserfahrung einer Buyer Persona zugeordnet. Damit sprach der Vertrieb gezielt nur noch Unternehmen an, die zum Profil passten, mit einer auf Branche und Persona zugeschnittenen Ansprache. Der Pflegeaufwand blieb gering, und trotzdem ging der Vertrieb in jeden Termin mit dem Wissen, wer ihm gegenübersitzt und was diese Person umtreibt. Weniger Aufwand, bessere Gespräche."
 kennzahlen:
   - wert: "~40 %"
