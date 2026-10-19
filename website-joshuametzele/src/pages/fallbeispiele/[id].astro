@@ -2,7 +2,6 @@
 // Unterseite pro Fallbeispiel. Wird nur gebaut, wenn im Kopfbereich landingpage: true steht.
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Kontakt from '../../components/Kontakt.astro';
 export async function getStaticPaths() {
   const cases = await getCollection('fallbeispiele', ({ data }) => !data.draft && data.landingpage);
   return cases.map((c) => ({ params: { id: c.id }, props: { c } }));
@@ -21,7 +20,7 @@ const fmt = (x) => x.toLocaleDateString('de-DE', { day: 'numeric', month: 'long'
       {d.date && <div class="eyebrow meta" style="color:var(--muted);margin-bottom:28px">{fmt(d.date)}</div>}
       {d.zusammenfassung && (
         <div class="ergebnis-box">
-          <div class="eyebrow label">Das Ergebnis</div>
+          <div class="label">Das Ergebnis</div>
           <p>{d.zusammenfassung}</p>
           {d.kennzahlen && (
             <div class="kennzahlen">
@@ -32,8 +31,15 @@ const fmt = (x) => x.toLocaleDateString('de-DE', { day: 'numeric', month: 'long'
           )}
         </div>
       )}
-      <article class="prose"><Content /></article>
+      <article class="prose story"><Content /></article>
     </div>
   </main>
-  <Kontakt titel={d.ctaTitel} text={d.ctaText} />
+  <!-- Schwarzer Banner über die volle Breite, zentriert, ohne Bild -->
+  <section class="cta cta-center">
+    <div class="wrap">
+      <h2 set:html={d.ctaTitel ?? 'Lass uns über dein <span class="hl">Projekt</span> sprechen.'} />
+      {d.ctaText && <p>{d.ctaText}</p>}
+      <a class="btn cta-btn" href="mailto:hallo@joshuametzele.de?subject=Projektanfrage">Kontakt aufnehmen →</a>
+    </div>
+  </section>
 </Base>

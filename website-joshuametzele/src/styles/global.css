@@ -225,12 +225,20 @@ footer{padding:56px 0 28px;font-size:15px}
 
 /* Fallbeispiel-Unterseiten („Aus der Praxis“) */
 .page .untertitel{font-family:var(--accentfont);font-weight:500;font-size:clamp(18px,2.2vw,21px);line-height:1.45;color:var(--muted);margin:-12px 0 14px}
-.ergebnis-box{border-left:3px solid var(--accent);background:var(--bg-alt);padding:22px 26px;margin:0 0 40px}
-.ergebnis-box .label{color:var(--accent);margin-bottom:8px}
+.ergebnis-box{border-left:3px solid var(--accent);background:var(--bg-alt);padding:26px 28px;margin:0 0 48px}
+.ergebnis-box .label{font-family:var(--accentfont);font-weight:600;font-size:22px;line-height:1.2;margin-bottom:10px}
 .ergebnis-box p{font-size:17px}
-.kennzahlen{display:flex;gap:32px;flex-wrap:wrap;margin-top:18px}
-.kennzahl .wert{font-family:var(--display);color:var(--accent);font-size:38px;line-height:1}
-.kennzahl .text{font-size:14px;color:var(--muted);max-width:22ch;margin-top:6px}
-.prose h3{font-family:var(--accentfont);font-weight:600;font-size:19px;margin:26px 0 8px}
-.prose ol li{margin-bottom:12px}
-.prose ol li::marker{font-family:var(--display);color:var(--accent)}
+.kennzahlen{display:grid;grid-template-columns:1fr 1fr;margin-top:22px;border-top:1px solid var(--line)}
+.kennzahl{padding:18px 20px 0 0}
+.kennzahl + .kennzahl{padding-left:28px;border-left:1px solid var(--line)}
+.kennzahl .wert{font-family:var(--display);color:var(--accent);font-size:44px;line-height:1;letter-spacing:.01em}
+.kennzahl .text{font-size:14px;line-height:1.4;color:var(--muted);margin-top:8px}
+.story h2{font-size:clamp(26px,3.4vw,32px);line-height:1.2;margin:56px 0 16px;letter-spacing:-.01em}
+.story h3{font-family:var(--accentfont);font-weight:600;font-size:20px;line-height:1.3;color:var(--accent);margin:32px 0 8px}
+.story ol li{margin-bottom:12px}
+.story ol li::marker{font-family:var(--display);color:var(--accent)}
+.story strong{font-family:var(--accentfont);font-weight:600}
+.cta-center{text-align:center}
+.cta-center h2{margin:0 auto;max-width:20ch}
+.cta-center p{margin:22px auto 0}
+@media (max-width:520px){.kennzahlen{grid-template-columns:1fr}.kennzahl + .kennzahl{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:18px}}
