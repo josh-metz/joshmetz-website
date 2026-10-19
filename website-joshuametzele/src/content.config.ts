@@ -27,6 +27,16 @@ const fallbeispiele = defineCollection({
     platzhalter: z.boolean().default(false),
     landingpage: z.boolean().default(false),
     draft: z.boolean().default(false),
+    // Felder für die eigene Unterseite (nur nötig, wenn landingpage: true)
+    headline: z.string().optional(),       // Überschrift auf der Unterseite
+    untertitel: z.string().optional(),     // Zeile unter der Überschrift
+    date: z.coerce.date().optional(),      // Veröffentlichungsdatum
+    seoTitel: z.string().optional(),       // Titel bei Google (ideal unter 60 Zeichen)
+    beschreibung: z.string().optional(),   // Text bei Google unter dem Titel (120–155 Zeichen)
+    zusammenfassung: z.string().optional(),// Ergebnis-Kasten oben auf der Unterseite
+    kennzahlen: z.array(z.object({ wert: z.string(), text: z.string() })).optional(),
+    ctaTitel: z.string().optional(),       // Überschrift im schwarzen Banner unten
+    ctaText: z.string().optional(),        // Text im schwarzen Banner unten
   }),
 });
 

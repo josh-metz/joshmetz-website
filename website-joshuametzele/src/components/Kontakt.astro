@@ -1,12 +1,17 @@
 ---
 // Großer Call-to-Action-Banner vor der Fußzeile: links Text mit Button darunter, rechts Zeichnung
+// Überschrift und Text lassen sich pro Unterseite anpassen (titel darf <span class="hl">…</span> enthalten).
+const {
+  titel = 'Lass uns über dein <span class="hl">Projekt</span> sprechen.',
+  text = 'Im Erstgespräch schauen wir, wo ihr gerade Zeit verliert und ob ein CRM-, Automatisierungs- oder KI-Projekt der richtige nächste Schritt ist. Unverbindlich, in 30 Minuten.',
+} = Astro.props;
 ---
 <!-- KONTAKT / CTA -->
   <section id="kontakt" class="cta">
     <div class="wrap cta-inner">
       <div>
-        <h2>Lass uns über dein <span class="hl">Projekt</span> sprechen.</h2>
-        <p>Im Erstgespräch schauen wir, wo ihr gerade Zeit verliert und ob ein CRM-, Automatisierungs- oder KI-Projekt der richtige nächste Schritt ist. Unverbindlich, in 30 Minuten.</p>
+        <h2 set:html={titel} />
+        <p>{text}</p>
         <a class="btn cta-btn" href="mailto:hallo@joshuametzele.de?subject=Projektanfrage">Kontakt aufnehmen →</a>
       </div>
       <div class="cta-art">

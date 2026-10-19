@@ -1,0 +1,39 @@
+---
+// Unterseite pro Fallbeispiel. Wird nur gebaut, wenn im Kopfbereich landingpage: true steht.
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Kontakt from '../../components/Kontakt.astro';
+export async function getStaticPaths() {
+  const cases = await getCollection('fallbeispiele', ({ data }) => !data.draft && data.landingpage);
+  return cases.map((c) => ({ params: { id: c.id }, props: { c } }));
+}
+const { c } = Astro.props;
+const d = c.data;
+const { Content } = await render(c);
+const fmt = (x) => x.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title={d.seoTitel ?? `${d.headline ?? d.title} · Joshua Metzele`} description={d.beschreibung ?? d.teaser}>
+  <main class="page">
+    <div class="wrap">
+      <a class="back" href="/#praxis">← Aus der Praxis</a>
+      <h1>{d.headline ?? d.title}</h1>
+      {d.untertitel && <p class="untertitel">{d.untertitel}</p>}
+      {d.date && <div class="eyebrow meta" style="color:var(--muted);margin-bottom:28px">{fmt(d.date)}</div>}
+      {d.zusammenfassung && (
+        <div class="ergebnis-box">
+          <div class="eyebrow label">Das Ergebnis</div>
+          <p>{d.zusammenfassung}</p>
+          {d.kennzahlen && (
+            <div class="kennzahlen">
+              {d.kennzahlen.map((k) => (
+                <div class="kennzahl"><div class="wert">{k.wert}</div><div class="text">{k.text}</div></div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+      <article class="prose"><Content /></article>
+    </div>
+  </main>
+  <Kontakt titel={d.ctaTitel} text={d.ctaText} />
+</Base>
