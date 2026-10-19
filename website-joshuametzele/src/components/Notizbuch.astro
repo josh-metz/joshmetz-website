@@ -18,7 +18,7 @@ const fmt = (d) => d.toLocaleDateString('de-DE', { month: 'long', year: 'numeric
           <div class="eyebrow meta">{fmt(p.data.date)}{p.data.minutes && ` · ${p.data.minutes} Min.`}</div>
           <h3>{p.data.title}</h3>
           <p>{p.data.summary}</p>
-          <a class="more" href={`/notizbuch/${p.id}`}>Weiterlesen →</a>
+          <a class="more" href={`/notizbuch/${p.id}/`}>Weiterlesen →</a>
         </article>
       ))}
       {posts.length === 0 && <p>Bald mehr.</p>}

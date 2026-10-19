@@ -1,0 +1,5 @@
+# Alle Suchmaschinen und KI-Crawler dürfen die Website lesen
+User-agent: *
+Allow: /
+
+Sitemap: https://joshuametzele.de/sitemap-index.xml

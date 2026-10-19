@@ -41,7 +41,7 @@ const cases = (await getCollection('fallbeispiele', ({ data }) => !data.draft))
             {cases.map((c) => {
               const Tag = c.data.landingpage ? 'a' : 'div';
               return (
-                <Tag class="case" href={c.data.landingpage ? `/fallbeispiele/${c.id}` : undefined}>
+                <Tag class="case" href={c.data.landingpage ? `/fallbeispiele/${c.id}/` : undefined}>
                   <div class="eyebrow tag">{c.data.landingpage ? 'Case Study' : 'Anwendungsfall'} · {c.data.kategorie}</div>
                   <h3>{c.data.landingpage ? (c.data.headline ?? c.data.title) : c.data.title}</h3>
                   {c.data.ergebnis && <div class="result">{c.data.ergebnis}</div>}

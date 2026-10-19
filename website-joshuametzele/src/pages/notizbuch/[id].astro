@@ -7,9 +7,20 @@ export async function getStaticPaths() {
 }
 const { post } = Astro.props;
 const { Content } = await render(post);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.summary,
+  inLanguage: 'de-DE',
+  datePublished: post.data.date.toISOString().slice(0, 10),
+  author: { '@type': 'Person', '@id': 'https://joshuametzele.de/#person', name: 'Joshua Metzele', url: 'https://joshuametzele.de/' },
+  publisher: { '@id': 'https://joshuametzele.de/#person' },
+  mainEntityOfPage: new URL(`/notizbuch/${post.id}/`, Astro.site).href,
+};
 const fmt = (d) => d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<Base title={`${post.data.title} · Joshua Metzele`} description={post.data.summary}>
+<Base title={`${post.data.title} · Joshua Metzele`} description={post.data.summary} type="article" jsonLd={jsonLd}>
   <main class="page">
     <div class="wrap">
       <a class="back" href="/#notizbuch">← Notizbuch</a>

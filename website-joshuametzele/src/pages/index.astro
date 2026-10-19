@@ -6,8 +6,37 @@ import Arbeitsweise from '../components/Arbeitsweise.astro';
 import Notizbuch from '../components/Notizbuch.astro';
 import UeberMich from '../components/UeberMich.astro';
 import Kontakt from '../components/Kontakt.astro';
+import { SITE } from '../site.config.mjs';
+// Strukturierte Daten: wer ich bin und was ich anbiete (für Google und KI-Suchen)
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://joshuametzele.de/#person',
+    name: 'Joshua Metzele',
+    url: 'https://joshuametzele.de/',
+    image: 'https://joshuametzele.de/images/joshua-portrait.webp',
+    jobTitle: 'Prozess- und Datenoptimierer für Vertriebsteams',
+    email: 'mailto:hallo@joshuametzele.de',
+    address: { '@type': 'PostalAddress', addressLocality: 'Berlin', addressCountry: 'DE' },
+    knowsAbout: ['CRM', 'HubSpot', 'Vertriebsautomatisierung', 'Account-Based Selling', 'Lead Scoring', 'KI im Vertrieb'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': 'https://joshuametzele.de/#service',
+    name: SITE.name,
+    url: 'https://joshuametzele.de/',
+    description: SITE.description,
+    email: 'hallo@joshuametzele.de',
+    founder: { '@id': 'https://joshuametzele.de/#person' },
+    address: { '@type': 'PostalAddress', addressLocality: 'Berlin', addressCountry: 'DE' },
+    areaServed: [{ '@type': 'Country', name: 'Deutschland' }],
+    serviceType: ['CRM-Aufbau und Optimierung', 'Pipeline-Automatisierung', 'KI-Einführung im Vertrieb'],
+  },
+];
 ---
-<Base>
+<Base jsonLd={jsonLd}>
   <main>
     <Hero />
     <Leistungen />

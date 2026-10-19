@@ -1,0 +1,2 @@
+# Viele Crawler fragen nach /sitemap.xml, die Sitemap heißt aber sitemap-index.xml
+/sitemap.xml /sitemap-index.xml 301

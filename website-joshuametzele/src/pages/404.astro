@@ -1,0 +1,16 @@
+---
+// Fehlerseite: Cloudflare Pages liefert sie für jede unbekannte Adresse mit Status 404 aus.
+// Ohne diese Seite zeigt Cloudflare stattdessen die Startseite (schlecht für Google).
+import Base from '../layouts/Base.astro';
+---
+<Base title="Seite nicht gefunden · Joshua Metzele" noindex>
+  <main class="page">
+    <div class="wrap">
+      <h1>Diese Seite gibt es nicht.</h1>
+      <div class="prose">
+        <p>Vielleicht hat sich die Adresse geändert. Auf der Startseite findest du alles Wichtige.</p>
+      </div>
+      <a class="back" href="/">← Zur Startseite</a>
+    </div>
+  </main>
+</Base>

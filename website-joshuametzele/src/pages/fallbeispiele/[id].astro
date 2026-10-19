@@ -9,9 +9,24 @@ export async function getStaticPaths() {
 const { c } = Astro.props;
 const d = c.data;
 const { Content } = await render(c);
+const ogBild = d.coverBild ? d.coverBild.replace(/\/images\/case-(.+)\.webp$/, '/images/og-$1.jpg') : undefined;
+// Strukturierte Daten: Artikel mit Autor, Datum und Bild (für Google und KI-Suchen)
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: d.headline ?? d.title,
+  description: d.beschreibung ?? d.teaser,
+  inLanguage: 'de-DE',
+  ...(d.date && { datePublished: d.date.toISOString().slice(0, 10) }),
+  ...(d.coverBild && { image: new URL(d.coverBild, Astro.site).href }),
+  ...(d.kategorie && { about: d.kategorie }),
+  author: { '@type': 'Person', '@id': 'https://joshuametzele.de/#person', name: 'Joshua Metzele', url: 'https://joshuametzele.de/' },
+  publisher: { '@id': 'https://joshuametzele.de/#person' },
+  mainEntityOfPage: new URL(`/fallbeispiele/${c.id}/`, Astro.site).href,
+};
 const fmt = (x) => x.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<Base title={d.seoTitel ?? `${d.headline ?? d.title} · Joshua Metzele`} description={d.beschreibung ?? d.teaser}>
+<Base title={d.seoTitel ?? `${d.headline ?? d.title} · Joshua Metzele`} description={d.beschreibung ?? d.teaser} type="article" image={ogBild} jsonLd={jsonLd}>
   <main class="page">
     <div class="wrap">
       <a class="back" href="/#praxis">← Aus der Praxis</a>
