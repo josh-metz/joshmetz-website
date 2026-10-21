@@ -11,6 +11,8 @@ const notizbuch = defineCollection({
     summary: z.string(),
     minutes: z.number().optional(),
     draft: z.boolean().default(false),
+    coverBild: z.string().optional(),      // Titelbild unter der Überschrift, z. B. /images/notiz-datei.webp
+    coverAlt: z.string().optional(),       // Bildbeschreibung (für Google und Screenreader)
   }),
 });
 
