@@ -18,8 +18,8 @@ const jsonLd = {
   publisher: { '@id': 'https://joshuametzele.de/#person' },
   mainEntityOfPage: new URL(`/notizbuch/${post.id}/`, Astro.site).href,
 };
-// Vorschaubild für LinkedIn & Co.: /images/notiz-x.webp → /images/og-x.jpg (1200×630)
-const ogBild = post.data.coverBild ? post.data.coverBild.replace(/\/images\/notiz-(.+)\.webp$/, '/images/og-$1.jpg') : undefined;
+// Vorschaubild für LinkedIn & Co.: /images/notiz-x.webp oder .svg → /images/og-x.jpg (1200×630)
+const ogBild = post.data.coverBild ? post.data.coverBild.replace(/\/images\/notiz-(.+)\.(webp|svg)$/, '/images/og-$1.jpg') : undefined;
 const fmt = (d) => d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <Base title={`${post.data.title} · Joshua Metzele`} description={post.data.summary} type="article" image={ogBild} jsonLd={jsonLd}>
