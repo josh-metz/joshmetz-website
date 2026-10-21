@@ -47,6 +47,4 @@ Und wenn du selbst noch nicht weißt, was du willst? Dann hilft die KI auch beim
 
 Gerade bei wiederkehrenden Aufgaben überlege ich mir jetzt vorher, wie das Endergebnis aussehen soll. Wenn ich das selbst nicht weiß, woher soll es die KI wissen? Dieser erste Denkschritt ist der schwerste. Aber er entscheidet über alles, was danach kommt.
 
-## Fazit
-
 KI nimmt dir viel Arbeit ab, aber nicht das Denken am Anfang. Wer vor dem Prompt klärt, was er abgibt, was er will, woran er das Ergebnis misst und ob er dafür geradestehen kann, kommt schneller zu einem Ergebnis, mit dem er sich identifizieren kann.
