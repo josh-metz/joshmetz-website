@@ -1,9 +1,9 @@
 ---
-// Notizbuch: zeigt die neuesten Artikel aus src/content/notizbuch
+// Notizbuch: zeigt alle Artikel aus src/content/notizbuch, der neueste steht vorne.
+// Bei mehr als zwei Artikeln kann man seitlich scrollen (Wischen, Trackpad oder Pfeile).
 import { getCollection } from 'astro:content';
 const posts = (await getCollection('notizbuch', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 2);
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const fmt = (d) => d.toLocaleDateString('de-DE', { month: 'long', year: 'numeric' });
 ---
 <section id="notizbuch" class="alt">
@@ -11,8 +11,12 @@ const fmt = (d) => d.toLocaleDateString('de-DE', { month: 'long', year: 'numeric
     <div class="intro">
       <h2 class="section-title">Notizbuch</h2>
       <p>Gedanken aus der Arbeit. Unfertig erlaubt.</p>
+      <div class="posts-nav" hidden>
+        <button type="button" class="posts-btn" data-dir="-1" aria-label="Vorherige Artikel">←</button>
+        <button type="button" class="posts-btn" data-dir="1" aria-label="Nächste Artikel">→</button>
+      </div>
     </div>
-    <div class="posts">
+    <div class="posts" tabindex="0" aria-label="Notizbuch-Artikel">
       {posts.map((p) => (
         <article class="post">
           <div class="eyebrow meta">{fmt(p.data.date)}{p.data.minutes && ` · ${p.data.minutes} Min.`}</div>
@@ -25,3 +29,28 @@ const fmt = (d) => d.toLocaleDateString('de-DE', { month: 'long', year: 'numeric
     </div>
   </div>
 </section>
+
+<script>
+  // Pfeile nur zeigen, wenn es etwas zu scrollen gibt; am Anfang/Ende ausgrauen.
+  const track = document.querySelector('#notizbuch .posts');
+  const nav = document.querySelector('#notizbuch .posts-nav');
+  if (track && nav) {
+    const [prev, next] = nav.querySelectorAll('button');
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      nav.hidden = max <= 4;
+      prev.disabled = track.scrollLeft <= 4;
+      next.disabled = track.scrollLeft >= max - 4;
+    };
+    nav.querySelectorAll('button').forEach((b) =>
+      b.addEventListener('click', () => {
+        const card = track.querySelector('.post');
+        const step = card ? card.getBoundingClientRect().width + 28 : track.clientWidth;
+        track.scrollBy({ left: step * Number(b.dataset.dir), behavior: 'smooth' });
+      })
+    );
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+</script>

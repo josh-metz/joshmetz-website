@@ -1,6 +1,6 @@
 ---
 title: Warum keiner dein CRM pflegt
-date: 2026-10-21
+date: 2026-10-21T18:00:00Z
 summary: Ein CRM scheitert selten an fehlenden Funktionen, sondern an fehlenden Regeln. Wer zuerst das Fundament legt, braucht weniger Bausteine und bekommt ein System, das trägt.
 minutes: 3
 draft: false

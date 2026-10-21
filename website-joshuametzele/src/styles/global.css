@@ -130,8 +130,15 @@ blockquote p{font-family:var(--accentfont);font-weight:500;font-size:19px;line-h
 blockquote cite{display:block;margin-top:10px;font-style:normal;color:var(--accent)}
 
 /* Notizbuch */
-.posts{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-.post{border-top:2px solid var(--ink);padding-top:18px}
+.posts{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;padding-bottom:14px;scrollbar-width:thin;scrollbar-color:var(--line) transparent;min-width:0}
+.posts:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.post{flex:0 0 calc((100% - 28px) / 2);scroll-snap-align:start;border-top:2px solid var(--ink);padding-top:18px}
+.posts-nav{display:flex;gap:10px;margin-top:24px}
+.posts-nav[hidden]{display:none}
+.posts-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font-size:18px;line-height:1;cursor:pointer;transition:background .2s,color .2s,opacity .2s}
+.posts-btn:hover:not(:disabled){background:var(--ink);color:var(--bg-alt)}
+.posts-btn:disabled{opacity:.3;cursor:default}
+@media (prefers-reduced-motion:reduce){.posts{scroll-behavior:auto}}
 .post .meta{color:var(--muted)}
 .post h3{font-family:var(--accentfont);font-weight:600;font-size:24px;line-height:1.25;margin:10px 0}
 .post p{color:var(--muted);font-size:15px}
@@ -176,7 +183,8 @@ footer{padding:56px 0 28px;font-size:15px}
   .cases-scroll{position:static;overflow:visible;padding:0;inset:auto;-webkit-mask-image:none;mask-image:none}
   .process li{grid-template-columns:44px 1fr;gap:12px}
   .process .body{padding-left:26px}
-  .cards,.posts{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .post{flex-basis:85%}
   section{padding:64px 0}
   .intro p{max-width:none}
 }

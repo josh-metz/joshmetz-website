@@ -1,6 +1,6 @@
 ---
 title: Der erste Gedanke gehört dir
-date: 2026-10-21
+date: 2026-10-21T10:00:00Z
 summary: Wer selbst nicht weiß, was am Ende rauskommen soll, bekommt es auch von der KI nicht. Vier Fragen vor jedem Prompt sparen viele Korrekturschleifen, gerade im Vertrieb.
 minutes: 3
 draft: false
