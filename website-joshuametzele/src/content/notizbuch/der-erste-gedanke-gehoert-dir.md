@@ -3,7 +3,7 @@ title: Der erste Gedanke gehört dir
 date: 2026-10-21
 summary: Wer selbst nicht weiß, was am Ende rauskommen soll, bekommt es auch von der KI nicht. Vier Fragen vor jedem Prompt sparen viele Korrekturschleifen, gerade im Vertrieb.
 minutes: 3
-draft: true
+draft: false
 coverBild: /images/notiz-erster-gedanke.webp
 coverAlt: Vier Strichfiguren neben wachsenden roten Kreisen, beschriftet mit Delegieren, Beschreiben, Überprüfen und Verantworten
 ---
