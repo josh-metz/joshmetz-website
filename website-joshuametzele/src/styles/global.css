@@ -251,3 +251,23 @@ footer{padding:56px 0 28px;font-size:15px}
 .cta-center h2{margin:0 auto;max-width:20ch}
 .cta-center p{margin:22px auto 0}
 @media (max-width:520px){.kennzahlen{grid-template-columns:1fr}.kennzahl + .kennzahl{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:18px}}
+
+/* Navigation: aktuelle Unterseite grün markieren */
+nav a[aria-current="page"]{color:var(--accent)}
+/* Sehr schmale Handys: mit dem FAQ-Link stehen drei Links neben dem Namen, daher etwas weniger Abstand */
+@media (max-width:400px){nav{gap:10px}}
+
+/* FAQ-Seite: Fragen als aufklappbare Liste, getrennt durch dünne Linien */
+.faq-list{margin-top:36px;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{display:grid;grid-template-columns:1fr 28px;gap:16px;align-items:center;padding:22px 0;cursor:pointer;list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover h2{color:var(--accent)}
+.faq-item summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.faq-item h2{font-family:var(--accentfont);font-weight:600;font-size:clamp(19px,2.2vw,22px);line-height:1.3;transition:color .2s}
+/* Plus-Zeichen rechts, wird beim Aufklappen zum Minus */
+.faq-item summary::after{content:"";width:28px;height:28px;border:1.5px solid var(--ink);border-radius:50%;background:linear-gradient(var(--ink),var(--ink)) center/11px 1.5px no-repeat,linear-gradient(var(--ink),var(--ink)) center/1.5px 11px no-repeat;transition:transform .25s}
+.faq-item[open] summary::after{background:linear-gradient(var(--ink),var(--ink)) center/11px 1.5px no-repeat;transform:rotate(180deg)}
+.faq-item p{color:var(--muted);font-size:18px;padding:0 44px 26px 0;max-width:62ch}
+@media (max-width:520px){.faq-item p{padding-right:0;font-size:17px}}
+@media (prefers-reduced-motion:reduce){.faq-item summary::after,.faq-item h2{transition:none}}

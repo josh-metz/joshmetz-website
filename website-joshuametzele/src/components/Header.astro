@@ -1,6 +1,8 @@
 ---
 // Kopfzeile: Logo mit Name links, Navigation rechts
 // Beim Runterscrollen gleiten Name und Unterzeile nach links hinter das Logo, nur das Logo bleibt stehen.
+// Auf der FAQ-Seite ist der FAQ-Link als aktuelle Seite markiert (grün).
+const aufFaq = Astro.url.pathname.startsWith('/faq');
 ---
 <header>
   <div class="wrap">
@@ -16,6 +18,7 @@
     <nav>
       <a href="/#leistungen">Leistungen</a>
       <a href="/#notizbuch">Notizbuch</a>
+      <a href="/faq/" aria-current={aufFaq ? 'page' : undefined}>FAQ</a>
       <a href="/#kontakt">Kontakt</a>
     </nav>
   </div>

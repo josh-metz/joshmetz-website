@@ -1,0 +1,81 @@
+---
+// FAQ-Landingpage: häufige Fragen zu Angebot, Ablauf, Kosten und Datenschutz.
+// Fragen und Antworten stehen nur hier in der Liste; daraus entstehen die sichtbare Seite UND die strukturierten Daten (FAQPage).
+// Regeln: Frage mit Thema im Wortlaut, Antwort im ersten Satz, 40–80 Wörter, jede Antwort verständlich ohne die anderen.
+import Base from '../layouts/Base.astro';
+import Kontakt from '../components/Kontakt.astro';
+
+const fragen = [
+  {
+    frage: 'Welche Leistungen bietest du für CRM und Vertrieb an?',
+    antwort: 'Joshua Metzele optimiert und automatisiert CRM-Systeme und Vertriebsprozesse für kleine und mittelständische Unternehmen. Typische Beispiele sind weniger Pflegeaufwand im CRM, klare Deal-Phasen, automatisierte Reportings, Workflows für Follow-ups oder verknüpfte Systeme. Was genau du brauchst, klären wir im Erstgespräch.',
+  },
+  {
+    frage: 'Wie läuft ein CRM-Projekt ab?',
+    antwort: 'Ein CRM-Projekt läuft in drei Schritten: Zuhören, Durchdenken, Umsetzen. Im Erstgespräch höre ich mir euren Status quo, eure Probleme und eure Wünsche an. Danach arbeite ich ein Konzept mit den besprochenen Anwendungsfällen aus. Im Kickoff legen wir daraus gemeinsam drei bis vier Ziele fest, und die Umsetzung startet. Ein Projekt kann einen Tag dauern, eine Woche oder drei Monate.',
+  },
+  {
+    frage: 'Wie viel Zeit kostet ein CRM-Projekt mein Team?',
+    antwort: 'Dein Team investiert ein Erstgespräch, ein Kickoff-Meeting und danach etwa eine Stunde pro Woche für einen gemeinsamen Termin. Dort besprechen wir Fortschritt, Fragen und nächste Schritte. Dazwischen bin ich per Telefon, Videocall oder E-Mail erreichbar. So bleibt dein Vertrieb eng eingebunden, ohne dass der Alltag darunter leidet.',
+  },
+  {
+    frage: 'Was kostet eine CRM-Optimierung?',
+    antwort: 'Die Kosten hängen vom Projektumfang ab und bestehen aus zwei Teilen: einem kleinen Fixbetrag und einem erfolgsabhängigen Anteil. Vor dem Start legen wir messbare Zielwerte fest, die meine Arbeit direkt beeinflusst, zum Beispiel „Anteil automatisierter Prozessschritte im Vertrieb auf 25 % steigern“. Den erfolgsabhängigen Anteil zahlst du nur, wenn diese Werte nachweisbar erreicht sind.',
+  },
+  {
+    frage: 'Was passiert, wenn das Projekt seine Ziele nicht erreicht?',
+    antwort: 'Eine Garantie gibt es nicht, aber dein Risiko ist klein. Der Fixbetrag ist gering, und der erfolgsabhängige Anteil fällt nur an, wenn die vorab vereinbarten Zielwerte nachweisbar erreicht sind. Dazu bindet das Projekt nach dem Kickoff nur etwa eine Stunde pro Woche in deinem Team.',
+  },
+  {
+    frage: 'Wie werden unsere Kundendaten im CRM-Projekt geschützt?',
+    antwort: 'Kundendaten behandle ich vertraulich und nach DSGVO. Vor dem Start unterschreibe ich auf Wunsch eine Verschwiegenheitsvereinbarung (NDA). Arbeite ich in deinem CRM mit personenbezogenen Daten, schließen wir einen Auftragsverarbeitungsvertrag (AVV) ab. Ich nutze einen eigenen Zugang mit nur den Rechten, die das Projekt braucht, und nach Projektende wird er entfernt.',
+  },
+  {
+    frage: 'Für welche Unternehmen eignet sich das Angebot?',
+    antwort: 'Das Angebot eignet sich für kleine und mittelständische Unternehmen, die mehr aus ihrem Vertrieb und ihrem CRM holen wollen, aber wenig Zeit und Budget für eine große Beratung haben. Typisch ist ein CRM, das eher bremst als hilft, und ein Vertriebsteam ohne eigene Kapazität, das zu ändern.',
+  },
+  {
+    frage: 'Was unterscheidet dich von einer klassischen CRM-Beratung?',
+    antwort: 'Drei Dinge. Du zahlst einen kleinen Fixbetrag, der Rest hängt an messbaren Zielwerten. Dein Team investiert ein Erstgespräch, einen Kickoff und danach etwa eine Stunde pro Woche statt einer Workshop-Reihe. Und ich setze selbst um, statt nur ein Konzept zu übergeben.',
+  },
+];
+
+// Strukturierte Daten: Google zeigt dafür keine Sonderanzeige mehr, KI-Suchen können die Fragen aber eindeutig zuordnen.
+// Wichtig: muss immer exakt dem sichtbaren Text entsprechen – deshalb aus derselben Liste erzeugt.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://joshuametzele.de/faq/#faq',
+  inLanguage: 'de-DE',
+  about: { '@id': 'https://joshuametzele.de/#service' },
+  author: { '@id': 'https://joshuametzele.de/#person' },
+  mainEntity: fragen.map(({ frage, antwort }) => ({
+    '@type': 'Question',
+    name: frage,
+    acceptedAnswer: { '@type': 'Answer', text: antwort },
+  })),
+};
+---
+<Base
+  title="FAQ zu CRM & Vertriebsautomatisierung | Joshua Metzele"
+  description="Antworten zu CRM-Optimierung und Vertriebsautomatisierung im Mittelstand: Leistungen, Ablauf, Zeitaufwand, Kosten, Risiko und Datenschutz."
+  jsonLd={jsonLd}
+>
+  <main class="page faq-page">
+    <div class="wrap">
+      <a class="back" href="/">← Start</a>
+      <h1>Häufige Fragen</h1>
+      <p class="untertitel">Was du vor einem CRM- oder Automatisierungsprojekt wissen willst: Leistungen, Ablauf, Kosten und Datenschutz.</p>
+
+      <div class="faq-list">
+        {fragen.map(({ frage, antwort }) => (
+          <details class="faq-item">
+            <summary><h2>{frage}</h2></summary>
+            <p>{antwort}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </main>
+  <Kontakt />
+</Base>
