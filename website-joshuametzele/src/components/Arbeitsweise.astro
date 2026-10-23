@@ -1,8 +1,14 @@
 ---
 // Links: So arbeite ich (vertikaler Zeitstrahl) · Mitte: Trennlinie · Rechts: Aus der Praxis (Fallbeispiel-Kacheln, vertikal scrollbar)
 import { getCollection } from 'astro:content';
+// Reihenfolge: zuerst die Case Studies (landingpage: true), die neueste oben (nach date),
+// danach die Anwendungsfälle nach „reihenfolge“.
 const cases = (await getCollection('fallbeispiele', ({ data }) => !data.draft))
-  .sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
+  .sort((a, b) => {
+    if (a.data.landingpage !== b.data.landingpage) return a.data.landingpage ? -1 : 1;
+    if (a.data.landingpage) return (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0);
+    return a.data.reihenfolge - b.data.reihenfolge;
+  });
 ---
 <!-- ARBEITSWEISE + BEISPIEL -->
   <section id="praxis">
