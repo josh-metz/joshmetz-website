@@ -9,7 +9,7 @@ export async function getStaticPaths() {
 const { c } = Astro.props;
 const d = c.data;
 const { Content } = await render(c);
-const ogBild = d.coverBild ? d.coverBild.replace(/\/images\/case-(.+)\.webp$/, '/images/og-$1.jpg') : undefined;
+const ogBild = d.coverBild ? d.coverBild.replace(/\/images\/case-(.+)\.(webp|svg)$/, '/images/og-$1.jpg') : undefined;
 // Strukturierte Daten: Artikel mit Autor, Datum und Bild (für Google und KI-Suchen)
 const jsonLd = {
   '@context': 'https://schema.org',
