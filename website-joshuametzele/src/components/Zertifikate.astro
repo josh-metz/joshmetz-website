@@ -13,7 +13,7 @@ const liste = [...ZERTIFIKATE].sort((a, b) => b.datum.localeCompare(a.datum));
           <a href={z.link} target="_blank" rel="noopener">
             <img src={z.bild} alt={`Badge ${z.titel}, ${z.aussteller}`} height="96" loading="lazy" decoding="async" />
             <span class="cert-title">{z.titel}</span>
-            <span class="cert-meta">Certification · <span class="nowrap">{z.aussteller}</span><span class="sr-only"> (offizieller Nachweis, öffnet in neuem Tab)</span></span>
+            <span class="cert-meta"><span class="nowrap">Certification ·</span> <span class="nowrap">{z.aussteller}</span><span class="sr-only"> (offizieller Nachweis, öffnet in neuem Tab)</span></span>
           </a>
         </li>
       ))}
