@@ -6,7 +6,7 @@ const posts = (await getCollection('notizbuch', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const fmt = (d) => d.toLocaleDateString('de-DE', { month: 'long', year: 'numeric' });
 ---
-<section id="notizbuch" class="alt">
+<section id="notizbuch">
   <div class="wrap grid-intro">
     <div class="intro">
       <h2 class="section-title">Notizbuch</h2>

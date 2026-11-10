@@ -1,18 +1,18 @@
 ---
-// Zertifikate: dunkles Band direkt unter dem Hero, ohne Überschrift. Nur die Badges, darunter Titel und Aussteller.
+// Zertifikate: graues Band direkt unter dem Hero, als schmales Band ohne Überschrift. Nur die Badges, darunter Titel und Aussteller.
 // Jedes Badge öffnet den offiziellen Nachweis. Pflege der Liste: src/data/zertifikate.mjs
 import { ZERTIFIKATE } from '../data/zertifikate.mjs';
 
 const liste = [...ZERTIFIKATE].sort((a, b) => b.datum.localeCompare(a.datum));
 const monat = (d) => new Date(d).toLocaleDateString('de-DE', { month: 'short', year: 'numeric' });
 ---
-<section id="zertifikate" class="certs" aria-label="Zertifikate">
+<section id="zertifikate" class="certs" aria-label="Zertifizierungen">
   <div class="wrap">
     <ul class="certs-list">
       {liste.map((z) => (
         <li class="cert">
           <a href={z.link} target="_blank" rel="noopener">
-            <img src={z.bild} alt={`Badge ${z.titel}, ${z.aussteller}`} height="112" loading="lazy" decoding="async" />
+            <img src={z.bild} alt={`Badge ${z.titel}, ${z.aussteller}`} height="96" loading="lazy" decoding="async" />
             <span class="cert-title">{z.titel}</span>
             <span class="cert-meta">{z.aussteller} · <span class="nowrap">{monat(z.datum)}</span><span class="sr-only"> (offizieller Nachweis, öffnet in neuem Tab)</span></span>
           </a>
