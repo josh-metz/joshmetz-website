@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import Leistungen from '../components/Leistungen.astro';
 import Arbeitsweise from '../components/Arbeitsweise.astro';
 import Notizbuch from '../components/Notizbuch.astro';
+import Zertifikate from '../components/Zertifikate.astro';
 import UeberMich from '../components/UeberMich.astro';
 import Kontakt from '../components/Kontakt.astro';
 import { SITE } from '../site.config.mjs';
@@ -41,6 +42,7 @@ const jsonLd = [
 <Base jsonLd={jsonLd}>
   <main>
     <Hero />
+    <Zertifikate />
     <Leistungen />
     <Arbeitsweise />
     <Notizbuch />
